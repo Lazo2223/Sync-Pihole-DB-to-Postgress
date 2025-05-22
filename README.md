@@ -11,7 +11,7 @@ This project serves as a personal learning journey to deepen knowledge in Postgr
   - Views and materialized views  
   - Indexing  
   - Stored procedures  
-- Design and implement a functioning PostgreSQL database from scratch  
+- Design and implement a functioning PostgreSQL database  
 - Continuously sync DNS queries from Pi-hole’s SQLite database into PostgreSQL  
 - Enable custom DNS monitoring via Grafana dashboards  
 - Build anomaly detection and alerting (new/unusual domain activity)  
@@ -35,7 +35,7 @@ This project serves as a personal learning journey to deepen knowledge in Postgr
 
 1. **Review the Pi-hole SQLite schema**  
    → [https://github.com/Lazo2223/Sync-Pihole-DB-to-Postgress/blob/main/Untitled.png](#)  
-2. **Design and create a PostgreSQL schema**  
+2. **Create a PostgreSQL schema**  
    → [https://github.com/Lazo2223/Sync-Pihole-DB-to-Postgress/blob/main/create%20Schema%20on%20Postgress.sql](#)  
 3. **Write and test a sync script** to copy data incrementally  
    → [https://github.com/Lazo2223/Sync-Pihole-DB-to-Postgress/blob/main/Import%20DB%20from%20SQLlite%20to%20Postgress.py](#)  
