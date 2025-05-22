@@ -1,3 +1,4 @@
+--Join tables for easy access and query only view_domains_info_all
 CREATE OR REPLACE VIEW view_domains_info_all AS
 
 SELECT did.domain, 
@@ -14,3 +15,17 @@ LEFT JOIN client_by_id cid
 
 SELECT * 
 FROM view_domains_info_all
+
+-- first seen domain in the last 10 days
+	
+CREATE OR REPLACE VIEW new_activity_10_days AS
+SELECT domain, TO_TIMESTAMP(MIN(timestamp)) AS first_seen
+FROM view_domains_info_all
+GROUP BY domain
+HAVING MIN(timestamp) >= EXTRACT(EPOCH FROM NOW() - INTERVAL '10 day')
+
+-- first seen domain in the last 24 hours
+SELECT domain, TO_TIMESTAMP(MIN(timestamp)) AS first_seen
+FROM view_domains_info_all
+GROUP BY domain
+HAVING MIN(timestamp) >= EXTRACT(EPOCH FROM NOW() - INTERVAL '1 day')
