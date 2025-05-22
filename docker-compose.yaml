@@ -1,0 +1,12 @@
+services:
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    restart: unless-stopped
+    # if you are running as root then set it to 0
+    # else find the right id with the id -u command'
+    ports:
+      - '5000:3000'
+    # adding the mount volume point which we create earlier
+    volumes:
+      - '/home/Lazarov/coffeetime/grafana/data:/var/lib/grafana'
