@@ -57,3 +57,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+#Start the script:
+#python3 copy_pihole_to_postgres.py
+#in /home/Lazarov/coffeetime/piholev6/
