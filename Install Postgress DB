@@ -1,0 +1,48 @@
+Install postgres server
+
+sudo dnf install postgresql-server postgresql-contrib
+sudo systemctl start postgresql
+sudo systemctl enable postgresql
+
+Check status
+sudo systemctl status postgresql
+
+Allow connection:
+
+sudo nano /var/lib/pgsql/data/postgresql.conf
+#listen_addresses = 'localhost'
+#listen_addresses = '*'
+sudo nano /var/lib/pgsql/data/pg_hba.conf
+host    all             all             192.168.0.0/24           md5
+///this is for grafana to connect to postgres. in pg_hba.conf
+host    all             all             172.27.0.0/16         md5
+
+sudo systemctl restart postgresql
+
+Set password:
+
+sudo -i -u postgres
+psql
+\password postgres
+\q
+
+Allow on firewall:
+
+sudo firewall-cmd --permanent --add-port=5432/tcp
+sudo firewall-cmd --reload
+
+Connect:
+
+On **pgAdmin, create a new server:
+
+- **Name**: Fedora Postgres
+    
+- **Host**: 192.168.0.140
+    
+- **Port**: 5432
+    
+- **Username**: postgres
+    
+- **Password**: (password)
+    
+- **Maintenance DB**: postgres
